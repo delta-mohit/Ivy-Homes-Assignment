@@ -1,7 +1,11 @@
 const axios = require("axios");
 
 // Configuration
-const API_URL = "http://35.200.185.69:8000/v3/autocomplete?query=";
+
+const API_URL = "http://35.200.185.69:8000/v1/autocomplete?query=";
+// const API_URL = "http://35.200.185.69:8000/v2/autocomplete?query=";
+// const API_URL = "http://35.200.185.69:8000/v3/autocomplete?query=";
+
 const SAMPLE_QUERY = "a"; // Basic query string for testing
 const MAX_ATTEMPTS = 200; // Maximum number of API calls to try
 const DELAY_BETWEEN_CALLS_MS = 100; // Delay between each request in milliseconds
