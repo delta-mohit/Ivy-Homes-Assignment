@@ -1,0 +1,15 @@
+{
+  "name": "ivy-homes-assignment",
+  "version": "1.0.0",
+  "description": "Ensure you have the following installed on your system:\r - [Node.js](https://nodejs.org/en/download/) (Latest LTS version recommended)\r - [npm]() (comes with Node.js)\r - [Axios]() (for making HTTP requests)",
+  "main": "Extract Names from API",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.8.4"
+  }
+}

@@ -13,7 +13,7 @@ Ensure you have the following installed on your system:
 1. Clone the repository:
    ```sh
    git clone https://github.com/delta-mohit/Ivy-Homes-Assignment.git
-   cd IVY-Homes-Assignment
+   cd Ivy-Homes-Assignment
    ```
 2. Install dependencies (if any):
    ```sh
@@ -57,9 +57,9 @@ Formula of Delay (between each request) to handle rate limit = (60 ÷ maximum re
 
 To execute the script for a specific API version:
 ```sh
-node V1-extractNames.js  # For V1 API
-node V2-extractNames.js  # For V2 API
-node V3-extractNames.js  # For V3 API
+node v1-extractNames.js  # For /v1 API
+node v2-extractNames.js  # For /v2 API
+node v3-extractNames.js  # For /v3 API
 ```
 
 This will start fetching names recursively until all possible names are extracted.
