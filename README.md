@@ -84,11 +84,11 @@ Duration: 2 hours 35 minutes  21 seconds
 
 ### v3 results
 
-Total No. of Requests: (To be updated)
+Total No. of Requests: 3231
 
-Total Words Found: (To be updated)
+Total Words Found: 11500
 
-Duration: (To be updated)
+Duration: 50 minutes 20 seconds
 
 ## Example Output (Console Log)
 ```
