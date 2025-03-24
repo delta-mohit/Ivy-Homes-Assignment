@@ -25,23 +25,25 @@ Ensure you have the following installed on your system:
 ### API Overview
 The autocomplete API has three versions:
 - **V1:** Supports only alphabetic queries. Allows a maximum of 100 requests per minute. API Respose will be an result array of 0<=length<=10.
-- **V2:** Supports alphanumeric queries with the first two characters as digits (0-9). Allows a maximum of 70 words per minute, with a reset time of 60 seconds. API Respose will be an result array of 0<=length<=12.
+- **V2:** Supports alphanumeric queries with the first two characters must be digits (0-9). Allows a maximum of 70 words per minute, with a reset time of 60 seconds. API Respose will be an result array of 0<=length<=12.
 - **V3:** Supports alphanumeric queries along with special characters (" ", "+", ".", "-"). Allows a maximum of 50 words per minute, with a reset time of 60 seconds. API Respose will be an result array of 0<=length<=15.
 
 ### Recursive Data Extraction
 - The script recursively fetches all possible words using depth-first search (DFS).
 - Each API call increments `requestCount` to track the number of requests made.
 - Responses with fewer than the maximum allowed words indicate the end of a branch.
+For eg : for V1, if I get 9 (<10) responses for a particular prefix then it means we need to backtrack and try new combination instead of going forward. Please refer the code to understand this.
 
 ### Rate Limiting Handling
+Formula of Delay (between each request) to handle rate limit = (60 ÷ maximum request per minute) × 1000 ms.
 - **V1:** Allows 100 requests per minute. A `600ms` delay is introduced to avoid rate limits.
-- **V2:** Allows 70 words per minute. Implements a delay based on request count to manage rate limits.
-- **V3:** Allows 50 words per minute. Implements stricter rate limit handling with a longer delay.
-- If a `429` (Too Many Requests) error occurs, the script waits before retrying based on the API version constraints.
-- Other errors trigger a retry with a delay to handle temporary failures.
+- **V2:** Allows 50 requests per minute. Implements a delay of `1200ms` between each request.
+- **V3:** Allows 80 requests per minute. An delay of `1334ms` is applied to handle rate limit.
+- If a `429` (Too Many Requests) error occurs, the script waits `62` seconds before retrying.
+- Other errors trigger a retry with a delay of `30` seconds to handle temporary failures like network failure, etc.
 
 ### File Storage
-- Extracted words are stored in `words.txt`.
+- Extracted words are stored in `.txt` file.
 - Each word is appended to the file to ensure progress is saved.
 
 ### Logging
@@ -74,11 +76,11 @@ Duration: 06 hours 03 seconds
 
 ### v2 results
 
-Total No. of Requests: (To be updated)
+Total No. of Requests: 7417
 
-Total Words Found: (To be updated)
+Total Words Found: 13730
 
-Duration: (To be updated)
+Duration: 2 hours 35 minutes  21 seconds
 
 ### v3 results
 

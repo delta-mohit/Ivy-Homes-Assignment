@@ -29,7 +29,7 @@ async function getAutocomplete(query) {
           new Date((Date.now() - startTime)).toUTCString().split("1970 ")[1]
         };`
       );
-      return; // No words found, stop recursion
+      return; // No words found, return back from execution
     }
 
     // Append results to file
@@ -38,7 +38,7 @@ async function getAutocomplete(query) {
       counter++;
     }
 
-    // Stop recursion if less than 12 words (end of data)
+    // Return from current execution if less than 12 words (end of data). It means, end of this branch of recursion tree.
     if (numberOfWords < 12) {
       counter += numberOfWords;
       console.log(
@@ -66,7 +66,7 @@ async function getAutocomplete(query) {
     for (let i = 0; i < possibleLetters.length; i++) {
       const letter = possibleLetters[i];
       const newQuery = query + letter;
-      await sleep(1.2); // Ensure rate limit compliance (600ms delay)
+      await sleep(1.2); // Ensure rate limit compliance (1200ms delay)
       await getAutocomplete(newQuery);
     }
   } catch (error) {
